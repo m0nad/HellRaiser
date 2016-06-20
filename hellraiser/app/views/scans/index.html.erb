@@ -1,0 +1,36 @@
+<p>
+<h1>Listing Scans</h1>
+
+<table class="table">
+<%= link_to 'New Scan', new_scan_path %>
+<tr>
+<th>Title</th>
+<th>Target</th>
+<th>Status</th>
+<th>Show</th>
+<th>Destroy</th>
+</th>
+<% @scans.each do |scan| %>
+	<tr>
+	<th><%= scan.title %></th>
+	<th><%= scan.target %></th>
+	<th><% if scan.status == 0 %>
+  		Queued
+		<% elsif scan.status == 1 %>
+		Running
+		<% else %>
+		Finished
+		<% end %>
+	</th>
+	<th><%= link_to 'Show', scan_path(scan) %> </th>
+	<th>
+	<% if scan.status == 2 %>
+		<%= link_to 'Destroy', scan_path(scan),
+		method: :delete,
+		data: { confirm: 'Are you sure?' } %>
+	<% else %>
+		Destroy
+	<% end %> </th>
+	</tr>
+<% end %>
+</table>

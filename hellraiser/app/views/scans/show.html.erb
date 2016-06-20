@@ -1,0 +1,200 @@
+<p>
+<strong>Title:</strong>
+<%= @scan.title %>
+</p>
+<p>
+<strong>Target:</strong>
+<%= @scan.target %>
+</p>
+<p>
+<strong>Status</strong>
+
+<% if @scan.status == 0 %>
+  Queued
+<% elsif @scan.status == 1 %>
+  Running
+<% else %>
+  Finished
+<% end %>
+</p>
+
+<p>
+<% if @result and File.exist? @result %>
+  <p>
+  <% file = File.read(@result) %>
+  <% scans = JSON.parse(file) %>
+  <% id = 0 %>
+  <% scans.each do |scan| %>
+    <table>
+    <tr><td>IP Address:</td><td> <%= scan['ip'] %></td></tr>
+    <tr><td>Status:</td><td> <%= scan['status']['state'] %></td></tr>
+    <tr><td>MAC:</td><td> <%= scan['mac'] %></td></tr>
+    <tr><td>Vendor:</td><td> <%= scan['vendor'] %></td></tr>
+    <tr><td>Hostnames:</td><td>
+    <% scan['hostnames'].each do |h| %>
+      <%= h['name'] %>
+    <% end %>
+    </td></tr>
+    </table>
+    Operation System:
+    <% if scan['cpes'] %>
+      <% scan['cpes'].each do |(cpe,cves)| %>
+        <% if cves.count > 0 %>
+          <% cpe_id = cpe.gsub(/\.|\/|:/, '_') + id.to_s %>
+          <a data-toggle="collapse" href="#<%= cpe_id %>">
+          <%= cpe %>
+          </a>
+        <% else %>
+          <%= cpe %>
+        <% end %>
+        <div id="<%= cpe_id %>" class="collapse">
+        <%= cpe %>
+        <% id = id+1 %>
+        <% scan['cpes'][cpe].each do |cve| %>
+          <div>
+          <%= link_to cve['id'], cve['idurl'] %>
+          <% if cve['impact'] %>
+            <% if cve['impact']['confidentiality'] == "COMPLETE" %>
+              <span style="color:red" title="Confidentiality Impact: COMPLETE">
+            <% elsif cve['impact']['confidentiality'] == "PARTIAL" %>
+              <span style="color:orange" title="Confidentiality Impact: PARTIAL">
+            <% elsif cve['impact']['confidentiality'] == "NONE" %>
+              <span style="color:green" title="Confidentiality Impact: NONE">
+            <% else %>
+              <span style="color:black">
+            <% end %>
+            C
+            </span>
+            <% if cve['impact']['integrity'] == "COMPLETE" %>
+              <span style="color:red" title="Integrity Impact: COMPLETE">
+            <% elsif cve['impact']['integrity'] == "PARTIAL" %>
+              <span style="color:orange" title="Integrity Impact: PARTIAL">
+            <% elsif cve['impact']['integrity'] == "NONE" %>
+              <span style="color:green" title="Integrity Impact: NONE">
+            <% else %>
+              <span style="color:black">
+            <% end %>
+            I
+            </span>
+            <% if cve['impact']['availability'] == "COMPLETE" %>
+              <span style="color:red" title="Availability Impact: COMPLETE">
+            <% elsif cve['impact']['availability'] == "PARTIAL" %>
+              <span style="color:orange" title="Availability Impact: PARTIAL">
+            <% elsif cve['impact']['availability'] == "NONE" %>
+              <span style="color:green" title="Availability Impact: NONE">
+            <% else %>
+              <span style="color:black">
+            <% end %>
+            A
+            </span>
+          <% end %>
+          <% if cve['access'] %>
+            <%= image_tag(cve['access']['vector'] + ".png", width: "20", height: "20", title: "ACCESS: " + cve['access']['vector']) %>
+          <% end %>
+          <% if cve['edb'] %>
+            <%= link_to image_tag("edb.png", width: "20", height:"20", title: "Exploit-DB"), cve['edb'] %>
+          <% end %>
+          <% if cve['msf'] %>
+            <%= link_to image_tag("msf.png", width: "20", height:"20", title: "Metasploit"), cve['msf'] %>
+          <% end %>
+          </div>
+        <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      System not reconized
+    <% end %>
+    <% if scan['ports'] %>
+      <table class="table table-bordered">
+      <thead>
+      <tr><td>Service</td><td>Banner</td><td>Port/Protocol</td><td>Status</td><td>CPEs</td></tr>
+      </thead>
+      <% scan['ports'].each_with_index do |port,i| %>
+        <tr>
+        <td><%= port['name'] %></td>
+        <td><%= port['product'] %> <%= port['version'] %> <%= port['extra_info'] %></td>
+        <td><%= port['port'] %>/<%= port['protocol'] %></td>
+        <td><%= port['state'] %></td>
+        <td>
+        <% port['cpes'].each do |(cpe,cves)| %>
+          <% if cves.count > 0 %>
+            <% cpe_id = cpe.gsub(/\.|\/|:/, '_') + id.to_s %>
+            <a data-toggle="collapse" href="#<%= cpe_id %>">
+            <%= cpe %>
+            </a>
+          <% else %>
+            <%= cpe %>
+          <% end %>
+        <% end %>
+        </td>
+        </tr>
+        <tr>
+        <td colspan="5">
+        <% port['cpes'].each do |(cpe,cves)| %>
+          <% if cves.count > 0 %>
+            <% cpe_id = cpe.gsub(/\.|\/|:/, '_') + id.to_s %>
+            <div id="<%= cpe_id %>" class="collapse">
+            <%= cpe %>
+            <% cves.each do |cve| %>
+              <div>
+              <%= link_to cve['id'], cve['idurl'] %>
+              <% if cve['impact'] %>
+                <% if cve['impact']['confidentiality'] == "COMPLETE" %>
+                  <span style="color:red" title="Confidentiality Impact: COMPLETE">
+                <% elsif cve['impact']['confidentiality'] == "PARTIAL" %>
+                  <span style="color:orange" title="Confidentiality Impact: PARTIAL">
+                <% elsif cve['impact']['confidentiality'] == "NONE" %>
+                  <span style="color:green" title="Confidentiality Impact: NONE">
+                <% else %>
+                  <span style="color:black">
+                <% end %>
+                C
+                </span>
+                <% if cve['impact']['integrity'] == "COMPLETE" %>
+                  <span style="color:red" title="Integrity Impact: COMPLETE">
+                <% elsif cve['impact']['integrity'] == "PARTIAL" %>
+                  <span style="color:orange" title="Integrity Impact: PARTIAL">
+                <% elsif cve['impact']['integrity'] == "NONE" %>
+                  <span style="color:green" title="Integrity Impact: NONE">
+                <% else %>
+                  <span style="color:black">
+                <% end %>
+                I
+                </span>
+                <% if cve['impact']['availability'] == "COMPLETE" %>
+                  <span style="color:red" title="Availability Impact: COMPLETE">
+                <% elsif cve['impact']['availability'] == "PARTIAL" %>
+                  <span style="color:orange" title="Availability Impact: PARTIAL">
+                <% elsif cve['impact']['availability'] == "NONE" %>
+                  <span style="color:green" title="Availability Impact: NONE">
+                <% else %>
+                  <span style="color:black">
+                <% end %>
+                A
+                </span>
+              <% end %>
+              <% if cve['access'] %>
+                <%= image_tag(cve['access']['vector'] + ".png", width: "20", height: "20", title: "ACCESS: " + cve['access']['vector']) %>
+              <% end %>
+              <% if cve['edb'] %>
+                <%= link_to image_tag("edb.png", width: "20", height:"20", title: "Exploit-DB"), cve['edb'] %>
+              <% end %>
+              <% if cve['msf'] %>
+               <%= link_to image_tag("msf.png", width: "20", height:"20", title: "Metasploit"), cve['msf'] %>
+              <% end %>
+              </div>
+            <% end %>
+          <% end %>
+          </div>
+        <% end %>
+        </td>
+        </tr>
+        <% id = id+1 %>
+      <% end %>
+      </table>
+    <% end %>
+  <% end %>
+<% end %>
+<p>
+<%= link_to 'Back', scans_path %>
+</p>

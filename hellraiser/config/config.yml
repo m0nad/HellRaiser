@@ -1,0 +1,12 @@
+cve_id_url: https://cve.mitre.org/cgi-bin/cvename.cgi?name=
+cvesearch_api_domain: cve.circl.lu
+gitedb_url: https://github.com/offensive-security/exploit-database/blob/master/
+gitmsf_url: https://github.com/rapid7/metasploit-framework/blob/master/
+edb_url: https://www.exploit-db.com/download/
+output_dir: .output/
+nmap_default_opts:
+    service_scan: true 
+    all_ports: true
+    syn_discovery: true
+    sudo: false
+    os_fingerprint: true
