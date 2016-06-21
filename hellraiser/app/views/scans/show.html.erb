@@ -53,7 +53,6 @@
           <% cpe_id = cpe.gsub(/\.|\/|:/, '_') + id.to_s %>
           <div id="<%= cpe_id %>" class="collapse">
           <%= cpe %>
-          <% id = id+1 %>
           <% cves.each do |cve| %>
             <div>
             <%= link_to cve['id'], cve['idurl'] %>
@@ -109,6 +108,7 @@
     <% else %>
       System not reconized
     <% end %>
+    <% id = id+1 %>
     <% if scan['ports'] %>
       <table class="table table-bordered">
       <thead>
