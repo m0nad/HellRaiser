@@ -109,7 +109,7 @@
       <thead>
       <tr><td>Service</td><td>Banner</td><td>Port/Protocol</td><td>Status</td><td>CPEs</td></tr>
       </thead>
-      <% scan['ports'].each_with_index do |port,i| %>
+      <% scan['ports'].each do |port| %>
         <tr>
         <td><%= port['name'] %></td>
         <td><%= port['product'] %> <%= port['version'] %> <%= port['extra_info'] %></td>
