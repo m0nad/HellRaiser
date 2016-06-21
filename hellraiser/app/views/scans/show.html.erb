@@ -50,7 +50,7 @@
         <div id="<%= cpe_id %>" class="collapse">
         <%= cpe %>
         <% id = id+1 %>
-        <% scan['cpes'][cpe].each do |cve| %>
+        <% cves.each do |cve| %>
           <div>
           <%= link_to cve['id'], cve['idurl'] %>
           <% if cve['impact'] %>
