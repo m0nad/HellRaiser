@@ -47,58 +47,63 @@
         <% else %>
           <%= cpe %>
         <% end %>
-        <div id="<%= cpe_id %>" class="collapse">
-        <%= cpe %>
-        <% id = id+1 %>
-        <% cves.each do |cve| %>
-          <div>
-          <%= link_to cve['id'], cve['idurl'] %>
-          <% if cve['impact'] %>
-            <% if cve['impact']['confidentiality'] == "COMPLETE" %>
-              <span style="color:red" title="Confidentiality Impact: COMPLETE">
-            <% elsif cve['impact']['confidentiality'] == "PARTIAL" %>
-              <span style="color:orange" title="Confidentiality Impact: PARTIAL">
-            <% elsif cve['impact']['confidentiality'] == "NONE" %>
-              <span style="color:green" title="Confidentiality Impact: NONE">
-            <% else %>
-              <span style="color:black">
+      <% end %> 
+      <% scan['cpes'].each do |(cpe,cves)| %>
+        <% if cves.count > 0 %>
+          <% cpe_id = cpe.gsub(/\.|\/|:/, '_') + id.to_s %>
+          <div id="<%= cpe_id %>" class="collapse">
+          <%= cpe %>
+          <% id = id+1 %>
+          <% cves.each do |cve| %>
+            <div>
+            <%= link_to cve['id'], cve['idurl'] %>
+            <% if cve['impact'] %>
+              <% if cve['impact']['confidentiality'] == "COMPLETE" %>
+                <span style="color:red" title="Confidentiality Impact: COMPLETE">
+              <% elsif cve['impact']['confidentiality'] == "PARTIAL" %>
+                <span style="color:orange" title="Confidentiality Impact: PARTIAL">
+              <% elsif cve['impact']['confidentiality'] == "NONE" %>
+                <span style="color:green" title="Confidentiality Impact: NONE">
+              <% else %>
+                <span style="color:black">
+              <% end %>
+              C
+              </span>
+              <% if cve['impact']['integrity'] == "COMPLETE" %>
+                <span style="color:red" title="Integrity Impact: COMPLETE">
+              <% elsif cve['impact']['integrity'] == "PARTIAL" %>
+                <span style="color:orange" title="Integrity Impact: PARTIAL">
+              <% elsif cve['impact']['integrity'] == "NONE" %>
+                <span style="color:green" title="Integrity Impact: NONE">
+              <% else %>
+                <span style="color:black">
+              <% end %>
+              I
+              </span>
+              <% if cve['impact']['availability'] == "COMPLETE" %>
+                <span style="color:red" title="Availability Impact: COMPLETE">
+              <% elsif cve['impact']['availability'] == "PARTIAL" %>
+                <span style="color:orange" title="Availability Impact: PARTIAL">
+              <% elsif cve['impact']['availability'] == "NONE" %>
+                <span style="color:green" title="Availability Impact: NONE">
+              <% else %>
+                <span style="color:black">
+              <% end %>
+              A
+              </span>
             <% end %>
-            C
-            </span>
-            <% if cve['impact']['integrity'] == "COMPLETE" %>
-              <span style="color:red" title="Integrity Impact: COMPLETE">
-            <% elsif cve['impact']['integrity'] == "PARTIAL" %>
-              <span style="color:orange" title="Integrity Impact: PARTIAL">
-            <% elsif cve['impact']['integrity'] == "NONE" %>
-              <span style="color:green" title="Integrity Impact: NONE">
-            <% else %>
-              <span style="color:black">
+            <% if cve['access'] %>
+              <%= image_tag(cve['access']['vector'] + ".png", width: "20", height: "20", title: "ACCESS: " + cve['access']['vector']) %>
             <% end %>
-            I
-            </span>
-            <% if cve['impact']['availability'] == "COMPLETE" %>
-              <span style="color:red" title="Availability Impact: COMPLETE">
-            <% elsif cve['impact']['availability'] == "PARTIAL" %>
-              <span style="color:orange" title="Availability Impact: PARTIAL">
-            <% elsif cve['impact']['availability'] == "NONE" %>
-              <span style="color:green" title="Availability Impact: NONE">
-            <% else %>
-              <span style="color:black">
+            <% if cve['edb'] %>
+              <%= link_to image_tag("edb.png", width: "20", height:"20", title: "Exploit-DB"), cve['edb'] %>
             <% end %>
-            A
-            </span>
+            <% if cve['msf'] %>
+              <%= link_to image_tag("msf.png", width: "20", height:"20", title: "Metasploit"), cve['msf'] %>
+            <% end %>
+            </div>
           <% end %>
-          <% if cve['access'] %>
-            <%= image_tag(cve['access']['vector'] + ".png", width: "20", height: "20", title: "ACCESS: " + cve['access']['vector']) %>
-          <% end %>
-          <% if cve['edb'] %>
-            <%= link_to image_tag("edb.png", width: "20", height:"20", title: "Exploit-DB"), cve['edb'] %>
-          <% end %>
-          <% if cve['msf'] %>
-            <%= link_to image_tag("msf.png", width: "20", height:"20", title: "Metasploit"), cve['msf'] %>
-          <% end %>
-          </div>
-        <% end %>
+       <% end %>
         </div>
       <% end %>
     <% else %>
