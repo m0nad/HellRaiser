@@ -19,6 +19,7 @@ Clone HellRaiser repository, change to hellraiser web app directory and run bund
 git clone https://github.com/m0nad/HellRaiser/
 cd HellRaiser/hellraiser/
 bundle install
+bundle exec rake db:migrate
 ```
 
 # Start
