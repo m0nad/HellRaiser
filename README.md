@@ -14,7 +14,7 @@ Install redis-server and nmap.
 sudo apt-get update
 sudo apt-get install redis-server nmap
 ```
-Clone HellRaiser repository, change to hellraiser web app directory and run bundle install.
+Clone HellRaiser repository, change to hellraiser web app directory and run bundle install and bundle exec rake db:migrate.
 ```
 git clone https://github.com/m0nad/HellRaiser/
 cd HellRaiser/hellraiser/
