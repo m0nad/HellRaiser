@@ -1,9 +1,9 @@
 class CreateScans < ActiveRecord::Migration
   def change
     create_table :scans do |t|
-      t.string :title
-      t.string :target
-      t.integer :status
+      t.string :title,   null: false
+      t.string :target,  null: false
+      t.integer :status, null: false, default: 0
 
       t.timestamps null: false
     end

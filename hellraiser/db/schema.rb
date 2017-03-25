@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20160304134102) do
 
   create_table "scans", force: :cascade do |t|
-    t.string   "title"
-    t.string   "target"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",                  null: false
+    t.string   "target",                 null: false
+    t.integer  "status",     default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end
