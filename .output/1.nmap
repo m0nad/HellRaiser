@@ -1,0 +1,19 @@
+# Nmap 7.40 scan initiated Sat Mar 25 14:35:37 2017 as: /usr/bin/nmap -sV --allports -PS -oA .output/1 localhost
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000047s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE     VERSION
+3000/tcp open  http        WEBrick httpd 1.3.1 (Ruby 2.1.10 (2016-04-01))
+3306/tcp open  mysql       MySQL 5.5.5-10.0.30-MariaDB-1~xenial
+5432/tcp open  postgresql?
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port5432-TCP:V=7.40%I=7%D=3/25%Time=58D6B87F%P=x86_64-pc-linux-gnu%r(SM
+SF:BProgNeg,8C,"E\0\0\0\x8bSFATAL\0VFATAL\0C0A000\0Munsupported\x20fronten
+SF:d\x20protocol\x2065363\.19778:\x20server\x20supports\x201\.0\x20to\x203
+SF:\.0\0Fpostmaster\.c\0L2009\0RProcessStartupPacket\0\0")%r(Kerberos,8C,"
+SF:E\0\0\0\x8bSFATAL\0VFATAL\0C0A000\0Munsupported\x20frontend\x20protocol
+SF:\x2027265\.28208:\x20server\x20supports\x201\.0\x20to\x203\.0\0Fpostmas
+SF:ter\.c\0L2009\0RProcessStartupPacket\0\0");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Mar 25 14:35:43 2017 -- 1 IP address (1 host up) scanned in 6.85 seconds

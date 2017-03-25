@@ -1,0 +1,14 @@
+<p>
+<h1>Listing Scans</h1>
+
+<table class="table">
+    <%= link_to 'New Scan', new_scan_path %>
+    <tr>
+        <th>Title</th>
+        <th>Target</th>
+        <th>Status</th>
+        <th>Show</th>
+        <th>Destroy</th>
+    </th>
+    <%= render partial: 'row', collection: @scans, as: :scan %>
+</table>

@@ -1,0 +1,4 @@
+# Nmap 7.40 scan initiated Sat Mar 25 14:35:37 2017 as: /usr/bin/nmap -sV --allports -PS -oA .output/1 localhost
+Host: 127.0.0.1 (localhost)	Status: Up
+Host: 127.0.0.1 (localhost)	Ports: 3000/open/tcp//http//WEBrick httpd 1.3.1 (Ruby 2.1.10 (2016-04-01))/, 3306/open/tcp//mysql//MySQL 5.5.5-10.0.30-MariaDB-1~xenial/, 5432/open/tcp//postgresql?///	Ignored State: closed (997)
+# Nmap done at Sat Mar 25 14:35:43 2017 -- 1 IP address (1 host up) scanned in 6.85 seconds

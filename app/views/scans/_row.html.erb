@@ -1,0 +1,15 @@
+<tr>
+  <th><%= scan.title %></th>
+  <th><%= scan.target %></th>
+  <th><%= scan.status %></th>
+  <th><%= link_to 'Show', scan_path(scan) %> </th>
+  <th>
+    <% if scan.finished? %>
+      <%= link_to 'Destroy', scan_path(scan),
+          method: :delete,
+          data: { confirm: 'Are you sure?' } %>
+    <% else %>
+      Destroy
+    <% end %>
+  </th>
+</tr>
