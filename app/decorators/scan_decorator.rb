@@ -1,13 +1,12 @@
 class ScanDecorator < Draper::Decorator
   delegate_all
-  include
 
   def status
     case scan.status
     when 'queued'
       h.icon('link', scan.status.titleize)
     when 'running'
-      h.icon('spinner', scan.status.titleize, class: 'fa-spin')
+      h.icon('refresh', scan.status.titleize, class: 'fa-spin')
     when 'finished'
       h.icon('check', scan.status.titleize)
     end
@@ -22,7 +21,7 @@ class ScanDecorator < Draper::Decorator
   end
 
   def show_link
-    h.link_to h.icon('file-text-o', 'Show'), scan, class: 'btn btn-xs btn-primary'
+    h.link_to h.icon('file-text', 'Show'), scan, class: 'btn btn-xs btn-primary'
   end
 
   def destroy_link

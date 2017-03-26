@@ -1,11 +1,11 @@
 <h1 class="page-header">
   <div class="container-fluid header-container" >
     <div class="row">
-      <div class="col-xs-6">
+      <div class="col-lg-6 col-xs-12">
         <%= render 'banner' %>
       </div>
-      <div id="form" class="col-xs-6 text-right header-buttons">
-        <%= link_to 'New Scan', new_scan_path, remote: true, id:'new_scan' , class: 'btn btn-lg btn-default' %>
+      <div id="form" class="col-lg-6 col-xs-12 text-right header-buttons">
+        <%= render 'scans/form' %>
       </div>
     </div>
   </div>

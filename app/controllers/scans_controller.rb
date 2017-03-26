@@ -1,6 +1,8 @@
 class ScansController < ApplicationController
 
   def index
+    @scan ||= Scan.new
+    
     respond_to do |format|
       format.json { render json: ScansDatatable.new(view_context) }
       format.html
