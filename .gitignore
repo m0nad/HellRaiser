@@ -18,3 +18,4 @@
 .byebug_history
 .output/**
 !.output/**.md
+dump.rdb
