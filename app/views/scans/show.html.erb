@@ -1,24 +1,27 @@
-<p>
-<strong>Title:</strong>
-<%= @scan.title %>
-</p>
-<p>
-<strong>Target:</strong>
-<%= @scan.target %>
-</p>
-<p>
-<strong>Status</strong>
+<h1 class="page-header">
+  <div class="container-fluid" >
+    <div class="row">
+      <div class="col-xs-6">
+        <%= @scan.title %>
+      </div>
+      <div class="col-xs-6 text-right">
+        <%= link_to 'Back', :back, class: 'btn btn-lg btn-default' %>
+      </div>
+    </div>
+  </div>
+</h1>
 
-<% if @scan.status == 0 %>
-  Queued
-<% elsif @scan.status == 1 %>
-  Running
-<% else %>
-  Finished
-<% end %>
-</p>
 
 <p>
+  <strong>Target:</strong>
+  <%= @scan.target %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @scan.status.titleize %>
+</p>
+
 <% if @result and File.exist? @result %>
   <p>
   <% file = File.read(@result) %>
@@ -47,7 +50,7 @@
         <% else %>
           <%= cpe %>
         <% end %>
-      <% end %> 
+      <% end %>
       <% scan['cpes'].each do |(cpe,cves)| %>
         <% if cves.count > 0 %>
           <% cpe_id = cpe.gsub(/\.|\/|:/, '_') + id.to_s %>
@@ -200,6 +203,3 @@
     <% end %>
   <% end %>
 <% end %>
-<p>
-<%= link_to 'Back', scans_path %>
-</p>

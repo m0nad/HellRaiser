@@ -1,14 +1,10 @@
 require 'hellraiser'
 
-class Hellraiserasync
+class HellraiserJob
   include Sidekiq::Worker
-  def save_to_json(hosts, filename)
-    File.open(filename, "w") do |f|
-      f.write(hosts.to_json)
-    end
-  end
 
   def perform(id)
+    return if cancelled?
     scan = Scan.find(id)
     scan.running!
 
@@ -23,6 +19,7 @@ class Hellraiserasync
     else
       portscan.scan(nmap_opts)
     end
+    return if cancelled?
     # cve scan
     hellraiser = HellRaiser::CveSearch.new
     result = hellraiser.scan(filename + '.xml')
@@ -31,6 +28,20 @@ class Hellraiserasync
     scan.status = 2
     scan.save
     redis.set id, filename + '.json' # id from database and filename
+  end
+
+  def cancelled?
+    Sidekiq.redis {|c| c.exists("cancelled-#{jid}") }
+  end
+
+  def self.cancel!(jid)
+    Sidekiq.redis {|c| c.setex("cancelled-#{jid}", 86400, 1) }
+  end
+
+  def save_to_json(hosts, filename)
+    File.open(filename, "w") do |f|
+      f.write(hosts.to_json)
+    end
   end
 
   def redis

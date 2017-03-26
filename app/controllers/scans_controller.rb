@@ -1,7 +1,10 @@
 class ScansController < ApplicationController
 
   def index
-    @scans = Scan.all
+    respond_to do |format|
+      format.json { render json: ScansDatatable.new(view_context) }
+      format.html
+    end
   end
 
   def show
@@ -9,42 +12,46 @@ class ScansController < ApplicationController
     @result = redis.get(@scan.id)
   end
 
-
   def new
     @scan ||= Scan.new
   end
-
 
   def create
     @scan = Scan.new(scan_params)
 
     if @scan.save
-      Hellraiserasync.perform_async(@scan.id)
-      redirect_to @scan
+      @scan.update(jid: HellraiserJob.perform_async(@scan.id))
     else
       render 'new'
     end
+
+    respond_to :js
   end
 
   def update
     @scan = Scan.find(params[:id])
-
-    if @scan.update(scan_params)
-      redirect_to @scan
-    else
-      render 'edit'
-    end
+    @scan.queued!
+    @scan.update(jid: HellraiserJob.perform_async(@scan.id))
+    respond_to :js
   end
 
   def destroy
     @scan = Scan.find(params[:id])
-    FileUtils.rm Dir.glob(HellRaiser.configuration.output_dir + @scan.id.to_s + '.*')
-    redis.del @scan.id
-    @scan.destroy
-    redirect_to scans_path
+
+    if @scan.finished?
+      FileUtils.rm Dir.glob(HellRaiser.configuration.output_dir + @scan.id.to_s + '.*')
+      redis.del @scan.id
+      @scan.destroy
+    else
+      HellraiserJob.cancel!(@scan.jid)
+      @scan.finished!
+    end
+
+    respond_to :js
   end
 
-private
+  private
+
   def scan_params
     params.require(:scan).permit(:title, :target)
   end

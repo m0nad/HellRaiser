@@ -10,10 +10,44 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require dataTables/bootstrap/2/jquery.dataTables.bootstrap
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require sweetalert
  *= require_tree .
  *= require_self
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th,
+.table > tfoot > tr > td {
+  padding: 8px 18px;
+}
+
+.field_with_errors input {
+  border-color: rgba(255, 0, 0, 0.50);
+}
+.field_with_errors input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255, 0, 0, 0.75);
+}
+.field_with_errors input::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255, 0, 0, 0.75);
+}
+.field_with_errors input:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255, 0, 0, 0.75);
+}
+.field_with_errors input:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255, 0, 0, 0.75);
+}
+
+.page-header .col-xs-6 {
+  padding-left: 0;
+  padding-right: 0;
+}

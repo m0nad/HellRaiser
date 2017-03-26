@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160304134102) do
     t.string   "title",                  null: false
     t.string   "target",                 null: false
     t.integer  "status",     default: 0, null: false
+    t.string   "jid"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

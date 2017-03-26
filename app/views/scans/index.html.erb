@@ -1,14 +1,18 @@
-<p>
-<h1>Listing Scans</h1>
+<h1 id="header" class="page-header" style="height:56px">
+  Listing Scans
+  <%= link_to 'New Scan', new_scan_path, remote: true, id:'new_scan' , class: 'btn btn-lg btn-default' %>
+  <form></form>
+</h1>
 
-<table class="table">
-    <%= link_to 'New Scan', new_scan_path %>
+<table class="table table-responsive datatable" data-api="<%= scans_path(format: :json) %>">
+  <thead>
     <tr>
-        <th>Title</th>
-        <th>Target</th>
-        <th>Status</th>
-        <th>Show</th>
-        <th>Destroy</th>
+      <th>Title</th>
+      <th>Target</th>
+      <th>Status</th>
+      <th></th>
     </th>
-    <%= render partial: 'row', collection: @scans, as: :scan %>
+  </thead>
+  <tbody>
+  </tbody>
 </table>

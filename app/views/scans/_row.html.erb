@@ -1,15 +1,29 @@
 <tr>
-  <th><%= scan.title %></th>
-  <th><%= scan.target %></th>
-  <th><%= scan.status %></th>
-  <th><%= link_to 'Show', scan_path(scan) %> </th>
-  <th>
-    <% if scan.finished? %>
-      <%= link_to 'Destroy', scan_path(scan),
-          method: :delete,
-          data: { confirm: 'Are you sure?' } %>
-    <% else %>
-      Destroy
+  <td><%= scan.title %></td>
+  <td><%= scan.target %></td>
+  <td>
+    <% case scan.status %>
+    <% when 'queued' %>
+      <%= icon('link', scan.status.titleize) %>
+    <% when 'running' %>
+      <%= icon('spinner', scan.status.titleize, class: 'fa-spin') %>
+    <% when 'finished' %>
+      <%= icon('check', scan.status.titleize) %>
     <% end %>
-  </th>
+  </td>
+  <td colspan="2" style="text-align:right">
+    <%= link_to icon('flag-checkered', 'Run'), scan_path(scan),
+          method: :put,
+          class: 'btn btn-xs btn-success' %>
+    <%= link_to icon('file-text-o', 'Show'), scan_path(scan),
+          class: 'btn btn-xs btn-primary' %>
+    <%= link_to icon('trash', 'Delete'), scan_path(scan),
+          method: :delete,
+          class: 'btn btn-xs btn-danger',
+          data: { confirm: 'Are you sure?' } if scan.finished? %>
+    <%= link_to icon('trash', 'Cancel'), scan_path(scan),
+          method: :delete,
+          class: 'btn btn-xs btn-danger',
+          data: { confirm: 'Are you sure?' } unless scan.finished? %>
+  </td>
 </tr>
