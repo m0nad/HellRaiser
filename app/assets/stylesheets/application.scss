@@ -74,3 +74,11 @@
   bottom:0;
   right:0;
 }
+
+@media (max-width: 767px) {
+  .header-buttons {
+    position: relative;
+    top: inherit;
+    bottom: inherit;
+  }
+}
