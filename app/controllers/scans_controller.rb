@@ -20,7 +20,7 @@ class ScansController < ApplicationController
     @scan = Scan.new(scan_params)
 
     if @scan.save
-      @scan.update(jid: HellraiserJob.perform_async(@scan.id))
+      @scan.update(jid: HellraiserWorker.perform_async(@scan.id))
     else
       render 'new'
     end
@@ -31,7 +31,7 @@ class ScansController < ApplicationController
   def update
     @scan = Scan.find(params[:id])
     @scan.queued!
-    @scan.update(jid: HellraiserJob.perform_async(@scan.id))
+    @scan.update(jid: HellraiserWorker.perform_async(@scan.id))
     respond_to :js
   end
 
@@ -43,7 +43,7 @@ class ScansController < ApplicationController
       redis.del @scan.id
       @scan.destroy
     else
-      HellraiserJob.cancel!(@scan.jid)
+      HellraiserWorker.cancel!(@scan.jid)
       @scan.finished!
     end
 

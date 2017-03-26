@@ -1,7 +1,14 @@
-<h1 id="header" class="page-header" style="height:56px">
-  Listing Scans
-  <%= link_to 'New Scan', new_scan_path, remote: true, id:'new_scan' , class: 'btn btn-lg btn-default' %>
-  <form></form>
+<h1 class="page-header">
+  <div class="container-fluid header-container" >
+    <div class="row">
+      <div class="col-xs-6">
+        <%= render 'banner' %>
+      </div>
+      <div id="form" class="col-xs-6 text-right header-buttons">
+        <%= link_to 'New Scan', new_scan_path, remote: true, id:'new_scan' , class: 'btn btn-lg btn-default' %>
+      </div>
+    </div>
+  </div>
 </h1>
 
 <table class="table table-responsive datatable" data-api="<%= scans_path(format: :json) %>">

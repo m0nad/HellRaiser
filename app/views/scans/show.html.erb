@@ -1,16 +1,20 @@
 <h1 class="page-header">
-  <div class="container-fluid" >
+  <div class="container-fluid header-container" >
     <div class="row">
       <div class="col-xs-6">
-        <%= @scan.title %>
+        <%= render 'banner' %>
       </div>
-      <div class="col-xs-6 text-right">
+      <div class="col-xs-6 text-right header-buttons">
         <%= link_to 'Back', root_path, class: 'btn btn-lg btn-default' %>
       </div>
     </div>
   </div>
 </h1>
 
+<p>
+  <strong>Title:</strong>
+  <%= @scan.title %>
+</p>
 
 <p>
   <strong>Target:</strong>

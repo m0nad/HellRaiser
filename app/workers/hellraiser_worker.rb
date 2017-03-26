@@ -1,12 +1,13 @@
 require 'hellraiser'
 
-class HellraiserJob
+class HellraiserWorker
   include Sidekiq::Worker
 
   def perform(id)
     return if cancelled?
     scan = Scan.find(id)
     scan.running!
+    ActionCable.server.broadcast 'scans', {status: scan.status}
 
     filename = HellRaiser.configuration.output_dir + scan.id.to_s
     nmap_opts = HellRaiser.configuration.nmap_default_opts
@@ -25,8 +26,8 @@ class HellraiserJob
     result = hellraiser.scan(filename + '.xml')
     save_to_json(result, filename + '.json')
     # change status to fished
-    scan.status = 2
-    scan.save
+    scan.finished!
+    ActionCable.server.broadcast 'scans', {status: scan.status}
     redis.set id, filename + '.json' # id from database and filename
   end
 

@@ -1,4 +1,4 @@
-class ScansDatatable < AjaxDatatablesRails::Base
+class ScansDatatable < ApplicationDatatable
 
   def sortable_columns
     @sortable_columns ||= %w(Scan.title Scan.target Scan.status)

@@ -1,6 +1,6 @@
-$('#header a').hide()
-$('#header form').remove()
-$('#header').append('<%= j render 'form' %>')
+$('#form a').hide()
+$('#form form').remove()
+$('#form').append('<%= j render 'form' %>')
 $('.field_with_errors').change(function() {
   $(this).removeClass('field_with_errors')
 })
