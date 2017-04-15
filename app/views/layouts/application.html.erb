@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HellRaiser</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => "reload" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => "reload" %>
+    <%= tag :meta, name: 'turbolinks-cache-control', content: 'no-cache' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

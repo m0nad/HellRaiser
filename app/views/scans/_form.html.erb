@@ -1,0 +1,14 @@
+<%= form_for @scan, remote: true, html: {class: 'form-inline', style: 'display:inline'} do |f| %>
+
+  <div class="form-group">
+    <%= f.text_field :title, placeholder: 'Scan Title', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :target, placeholder: 'Target IP Address',  class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.button icon('flag-checkered', 'Start'), class: 'btn btn-md btn-default' %>
+  </div>
+<% end %>

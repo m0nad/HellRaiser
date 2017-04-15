@@ -1,0 +1,25 @@
+<h1 class="page-header">
+  <div class="container-fluid header-container" >
+    <div class="row">
+      <div class="col-lg-6 col-xs-12">
+        <%= render 'banner' %>
+      </div>
+      <div id="form" class="col-lg-6 col-xs-12 text-right header-buttons">
+        <%= render 'scans/form' %>
+      </div>
+    </div>
+  </div>
+</h1>
+
+<table class="table table-responsive datatable" data-api="<%= scans_path(format: :json) %>">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Target</th>
+      <th>Status</th>
+      <th></th>
+    </th>
+  </thead>
+  <tbody>
+  </tbody>
+</table>

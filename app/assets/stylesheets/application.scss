@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require sweetalert
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+ #banner {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  margin: 1em 0px 1em;
+  padding:0;
+  color: #333333;
+  background: none;
+  border: none;
+  border-radius: none;
+ }
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th,
+.table > tfoot > tr > td {
+  padding: 8px 18px;
+}
+
+.field_with_errors input {
+  border-color: rgba(255, 0, 0, 0.5);
+  box-shadow: inset 0 1px 1px rgba(255, 0, 0, 0.07);
+}
+.field_with_errors input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255, 0, 0, 0.8);
+}
+.field_with_errors input::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255, 0, 0, 0.75);
+}
+.field_with_errors input:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255, 0, 0, 0.75);
+}
+.field_with_errors input:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255, 0, 0, 0.75);
+}
+
+.page-header [class*="col-"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.header-container {
+  position: relative;
+}
+
+.header-buttons {
+  position: absolute;
+  bottom:0;
+  right:0;
+}
+
+@media (max-width: 767px) {
+  .header-buttons {
+    position: relative;
+    top: inherit;
+    bottom: inherit;
+  }
+}
