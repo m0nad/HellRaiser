@@ -43,8 +43,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    ajax-datatables-rails (0.3.1)
-      railties (>= 3.1)
+    ajax-datatables-rails (1.0.0)
+      railties (>= 4.2)
     arel (7.1.4)
     autoprefixer-rails (9.6.1.1)
       execjs
