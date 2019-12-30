@@ -47,6 +47,7 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (9.6.1.1)
       execjs
+    bindex (0.8.1)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -62,7 +63,6 @@ GEM
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.5)
-    debug_inspector (0.0.2)
     draper (3.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -189,10 +189,10 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.1.10)
       execjs (>= 0.3.0, < 3)
-    web-console (3.4.0)
+    web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
-      debug_inspector
+      bindex (>= 0.4.0)
       railties (>= 5.0)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
