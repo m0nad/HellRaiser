@@ -61,4 +61,4 @@ gem 'sweet-alert-confirm'
 
 gem 'jquery-datatables-rails'
 gem 'ajax-datatables-rails'
-gem 'draper', '3.1.0'
+gem 'draper', '4.0.0'
