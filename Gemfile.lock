@@ -79,8 +79,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
-    crass (1.0.5)
-    draper (3.1.0)
+    crass (1.0.6)
+    draper (4.0.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
       activemodel-serializers-xml (>= 1.0)
@@ -93,7 +93,7 @@ GEM
       sass (>= 3.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.7.0)
+    i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
@@ -117,13 +117,13 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.13.0)
+    minitest (5.14.0)
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.0.8)
+    rack (2.1.2)
     rack-protection (2.0.7)
       rack
     rack-test (1.1.0)
@@ -228,7 +228,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   coffee-rails
-  draper (= 3.1.0)
+  draper (= 4.0.0)
   font-awesome-sass
   jbuilder (~> 2.9)
   jquery-datatables-rails
