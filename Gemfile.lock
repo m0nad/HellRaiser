@@ -60,8 +60,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
-    ajax-datatables-rails (0.3.1)
-      railties (>= 3.1)
+    ajax-datatables-rails (1.1.0)
+      railties (>= 4.2)
     autoprefixer-rails (9.6.1.1)
       execjs
     bindex (0.8.1)
