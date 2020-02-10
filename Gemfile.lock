@@ -95,8 +95,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.9.1)
-      activesupport (>= 4.2.0)
+    jbuilder (2.10.0)
+      activesupport (>= 5.0.0)
     jquery-datatables-rails (3.4.0)
       actionpack (>= 3.1)
       jquery-rails
@@ -230,7 +230,7 @@ DEPENDENCIES
   coffee-rails
   draper (= 4.0.0)
   font-awesome-sass
-  jbuilder (~> 2.9)
+  jbuilder (~> 2.10)
   jquery-datatables-rails
   jquery-rails
   puma
