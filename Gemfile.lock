@@ -80,7 +80,7 @@ GEM
     concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
     crass (1.0.6)
-    draper (4.0.0)
+    draper (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
       activemodel-serializers-xml (>= 1.0)
@@ -228,7 +228,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   coffee-rails
-  draper (= 4.0.0)
+  draper (= 4.0.1)
   font-awesome-sass
   jbuilder (~> 2.10)
   jquery-datatables-rails
