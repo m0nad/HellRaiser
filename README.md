@@ -21,7 +21,7 @@ gem install foreman
 Clone HellRaiser repository, change to hellraiser web app directory and run bundle install and bundle exec rake db:migrate.
 ```
 git clone https://github.com/m0nad/HellRaiser/
-bundle install
+bundle install --path vendor/bundle
 bundle exec rake db:migrate
 ```
 
