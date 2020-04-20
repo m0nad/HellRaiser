@@ -183,7 +183,7 @@ GEM
       tilt
     sdoc (1.1.0)
       rdoc (>= 5.0)
-    sidekiq (6.0.6)
+    sidekiq (6.0.7)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       rack-protection (>= 2.0.0)
