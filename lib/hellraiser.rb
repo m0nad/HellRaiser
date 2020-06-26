@@ -23,7 +23,8 @@ module HellRaiser
     def http_get_cve_for_cpe(cpe)
       # cve.circl.lu
       cvesearch_api_domain = HellRaiser.configuration.cvesearch_api_domain
-      return Net::HTTP.get(cvesearch_api_domain, '/api/cvefor/' + cpe.to_s)
+      url = URI(cvesearch_api_domain + '/api/cvefor/' + cpe.to_s)
+      return Net::HTTP.get(url)
     end
 
     def get_cve_edb_url(cve)
