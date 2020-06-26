@@ -6,7 +6,7 @@ Vulnerability Scanner
 
 # Install
 
-HellRaiser depends on [cve-search](https://github.com/cve-search/cve-search) API. Have a cve-search API running and add the address in `config/config.yml` in `cvesearch_api_domain` field.
+HellRaiser depends on [cve-search](https://github.com/cve-search/cve-search) API. Have a cve-search API running and add the address in `config/config.yml` on `cvesearch_api_domain` field.
 
 Install ruby, bundler and rails.
 https://gorails.com/setup/ubuntu/16.04
