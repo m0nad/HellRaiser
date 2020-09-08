@@ -158,7 +158,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rdoc (6.2.1)
-    redis (4.2.1)
+    redis (4.2.2)
     ref (2.0.0)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -183,7 +183,7 @@ GEM
       tilt
     sdoc (1.1.0)
       rdoc (>= 5.0)
-    sidekiq (6.1.1)
+    sidekiq (6.1.2)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
