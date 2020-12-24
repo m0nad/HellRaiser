@@ -17,11 +17,11 @@ class ScanDecorator < Draper::Decorator
   end
 
   def run_link
-    h.link_to h.icon('flag-checkered', 'Run'), scan, method: :put, remote: true, class: 'btn btn-xs btn-success'
+    h.link_to h.icon('flag', 'Run'), scan, method: :put, remote: true, class: 'btn btn-xs btn-success'
   end
 
   def show_link
-    h.link_to h.icon('file-text', 'Show'), scan, class: 'btn btn-xs btn-primary'
+    h.link_to h.icon('file', 'Show'), scan, class: 'btn btn-xs btn-primary'
   end
 
   def destroy_link
