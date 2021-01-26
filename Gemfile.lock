@@ -81,7 +81,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     connection_pool (2.2.3)
     crass (1.0.6)
     draper (4.0.1)
@@ -99,7 +99,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.10.1)
+    jbuilder (2.11.1)
       activesupport (>= 5.0.0)
     jquery-datatables-rails (3.4.0)
       actionpack (>= 3.1)
@@ -237,7 +237,7 @@ DEPENDENCIES
   coffee-rails
   draper (= 4.0.1)
   font-awesome-sass
-  jbuilder (~> 2.10)
+  jbuilder (~> 2.11)
   jquery-datatables-rails
   jquery-rails
   puma
