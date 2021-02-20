@@ -41,3 +41,7 @@ Access http://127.0.0.1:3000
 # How it works?
 
 HellRaiser scan with nmap then correlates cpe's found with cve-search to enumerate vulnerabilities.
+
+# Donate
+
+Support HellRaiser by [donating](https://m0nad.github.io/donate.html).
