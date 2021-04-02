@@ -8,8 +8,8 @@ Vulnerability Scanner
 
 HellRaiser depends on [cve-search](https://github.com/cve-search/cve-search) API. Have a cve-search API running and add the address in `config/config.yml` on `cvesearch_api_domain` field.
 
-Install ruby, bundler and rails.
-https://gorails.com/setup/ubuntu/16.04
+Install ruby 2.7.2, bundler 1.17.3 and rails.
+https://gorails.com/setup/ubuntu/20.04
 
 Install redis-server and nmap.
 ```
@@ -23,7 +23,7 @@ gem install foreman
 Clone HellRaiser repository, change to hellraiser web app directory and run bundle install and bundle exec rake db:migrate.
 ```
 git clone https://github.com/m0nad/HellRaiser/
-bundle install --path vendor/bundle
+bundle install
 bundle exec rake db:migrate
 ```
 
