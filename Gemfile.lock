@@ -185,7 +185,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sdoc (2.0.4)
+    sdoc (2.1.0)
       rdoc (>= 5.0)
     sidekiq (6.2.0)
       connection_pool (>= 2.2.2)
@@ -242,7 +242,7 @@ DEPENDENCIES
   rails (~> 6.1.3)
   ruby-nmap
   sass-rails
-  sdoc (~> 2.0.4)
+  sdoc (~> 2.1.0)
   sidekiq
   spring
   sqlite3
