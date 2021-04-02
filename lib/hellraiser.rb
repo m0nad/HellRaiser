@@ -57,7 +57,11 @@ module HellRaiser
     def get_cves_from_cpe(c)
       res = JSON.parse(http_get_cve_for_cpe(c))
       cves = []
+      if res and res.first and res.first[1] == "No cves found"
+        return []
+      end
       res.each_with_index do |cve, i|
+
         cves[i] = {
           id: cve['id'],
           access: cve['access'],
