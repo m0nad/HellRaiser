@@ -18,11 +18,12 @@ sudo apt-get install redis-server nmap
 ```
 Install the foreman gem.
 ```
-gem install foreman
+sudo gem install foreman
 ```
 Clone HellRaiser repository, change to hellraiser web app directory and run bundle install and bundle exec rake db:migrate.
 ```
 git clone https://github.com/m0nad/HellRaiser/
+cd HellRaiser
 bundle install
 bundle exec rake db:migrate
 ```
@@ -31,7 +32,7 @@ bundle exec rake db:migrate
 
 Start the Procfile using foreman.
 ```
-foreman s
+sudo foreman s
 ```
 
 # Usage
